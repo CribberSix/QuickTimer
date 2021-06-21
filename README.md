@@ -17,6 +17,8 @@ The optional parameter `decimals` determines how many decimal values of seconds 
 
 The optional parameter `description` is used describe the step and is shown in the `fancy_print` functions. 
 
+Use this function with a description of what happened right before it. 
+
 ####  Function `T.fancy_print(empty=True)`: 
 
 The optional parameter `empty` is used to empty the existing list of timestamps taken. 
@@ -34,15 +36,15 @@ T.take_time()  # First time is taken
 
 # some code doing xyz
 time.sleep(2)
-T.take_time("xyz")
+T.take_time("doing xyz")
 
 # some code doing abc
 time.sleep(10)
-T.take_time("abc")
+T.take_time("doing abc")
 
 # some code doing hfg
 time.sleep(5)
-T.take_time("hfg")
+T.take_time("doing hfg")
 
 T.fancy_print()
 
@@ -52,7 +54,7 @@ The printed messages:
 ```
 ------ Time measurements ------
 Overall: 17.0243 seconds
-Step 0:  2.0136 seconds -  11.83 % - Description: xyz
-Step 1: 10.0102 seconds -  58.80 % - Description: abc
-Step 2:  5.0005 seconds -  29.37 % - Description: hfg
+Step 0:  2.0136 seconds -  11.83 % - Description: doing xyz
+Step 1: 10.0102 seconds -  58.80 % - Description: doing abc
+Step 2:  5.0005 seconds -  29.37 % - Description: doing hfg
 ```
