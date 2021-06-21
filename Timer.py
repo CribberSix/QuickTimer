@@ -3,9 +3,10 @@ from datetime import datetime
 
 class Timer:
 
-    def __init__(self, decimals=".4f"):
+    def __init__(self, decimals_time=".4f", decimals_percentage=".2f"):
         self.times = []
-        self.decimals = decimals
+        self.decimals_time = decimals_time
+        self.decimals_percentage = decimals_percentage
 
     def take_time(self, description=""):
         """Snapshots the current time and inserts it into the List as a Tuple with the passed description."""
@@ -15,10 +16,17 @@ class Timer:
         """Fancy prints the differences between the individuals and the entire time taken."""
         r = self._get_individual_differences()
         entire_time = self._get_entire_difference()
+        
         print("------ Time measurements ------")
         print(f"Overall: {entire_time} seconds")
+
+        step_max_length = len(str(len(r)))  # get length of maximum step-string
+        second_max_length = max([len(x[0]) for x in r])  # get length of maximum seconds-string      
         for i, e in enumerate(r):
-            print(f"Step {i}: {e[0]} seconds - {e[1]} % - Description: {e[2]}")
+            step = f"{i}".rjust(step_max_length)
+            secs = f"{e[0]}".rjust(second_max_length)
+            perc = f"{e[1]}".format(1.2).rjust(6)
+            print(f"Step {step}: {secs} seconds - {perc} % - Description: {e[2]}")
         if empty:
             self._empty_time()
 
@@ -36,14 +44,16 @@ class Timer:
             diffs.append((d.total_seconds(), self.times[i][1]))
         total = sum([x[0] for x in diffs])
         if total > 0:
-            return [(format(x[0], self.decimals), round((x[0] / total * 100), 2), x[1]) for x in diffs]
+            return [(format(x[0], self.decimals_time), format(round((x[0] / total * 100), 2), self.decimals_percentage), x[1]) for x in diffs]
         else:
-            return [(format(x[0], self.decimals), 0, x[1]) for x in diffs]
+            return [(format(x[0], self.decimals_time), format(0, self.decimals_percentage), x[1]) for x in diffs]
 
     def _get_entire_difference(self):
         """Returns the difference between the first and the last timestamp."""
         if len(self.times) > 0:
             diff = self.times[-1][0] - self.times[0][0]
-            return format(diff.total_seconds(), self.decimals)
+            return format(diff.total_seconds(), self.decimals_time)
         else:
             return None
+
+        import time 
