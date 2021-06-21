@@ -28,7 +28,7 @@ If the list should not be emptied and you want further timestamps to be appended
 
 ## Example 
 
-```
+```python
 import time 
 
 T = Timer()  # Initialization
