@@ -3,7 +3,7 @@
 An easy to use python class to handle time measurement in code. 
 
 Instantiate the class and insert one-liners (`take_time`) between your existing code to take timestamps. 
-Call the `fancy_print` function to print an overview of how much time has passed between the `take_time` calls, including percentage of the time passed overall and step-descriptions. 
+Call the `fancy_print` function to print an nicely formatted overview of how much time has passed between the `take_time` calls, including time passed overall, percentage per step and step-descriptions. 
 
 
 ## Logic 
