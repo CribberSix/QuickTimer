@@ -8,14 +8,14 @@ Call the `fancy_print` function to print an overview of how much time has passed
 
 ## Logic 
 
-#### Initialization:  `Timer(decimals=".4f")`
+#### Initialization:  `Timer(, decimals_time=".4f", decimals_percentage=".2f")`
 
-The optional parameter `decimals` determines how many decimal values of seconds should be shown. 
+The optional parameters determine how many decimal values of seconds / of percentage values should be shown. 
 
 
 #### Function `T.take_time(description="")`:  
 
-The optional parameter `description` is used describe the step and is shown in the `fancy_print` functions. 
+The optional parameter `description` is used describe the step and is shown in the `fancy_print` function. 
 
 Use this function with a description of what happened right before it. 
 
