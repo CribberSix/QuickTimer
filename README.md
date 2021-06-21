@@ -8,7 +8,7 @@ Call the `fancy_print` function to print a nicely formatted overview of how much
 
 ## Logic 
 
-#### Initialization:  `Timer(, decimals_time=".4f", decimals_percentage=".2f")`
+#### Initialization:  `Timer(decimals_time=".4f", decimals_percentage=".2f")`
 
 The optional parameters determine how many decimal values of seconds / of percentage values should be shown. 
 
