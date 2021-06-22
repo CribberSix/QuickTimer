@@ -50,7 +50,7 @@ T.fancy_print()
 
 Output of the code: 
 
-```python
+```
 > Parsed the data
 > Stored the data
 > ------ Time measurements ------
