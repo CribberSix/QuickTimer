@@ -1,15 +1,15 @@
 Introduction
 ============
 
-``QuickTimer`` is a high-level OO Python package which aims to provide an easy and intuitive way of tracking your code runtime. 
+``QuickTimer`` is an easy to use python package to handle time measurements in code. 
 
-The aim here was to define a single object which would allow users to perform the various operations performed 
+The aim here was to define a single object which would allow users to easily track passed time throughout their code, as well as to present the tracking results in a fancy way.  
 
 
 Motivation
 **********
 
-As a newbie experimenter/hobbyist in the field of IoT using BLE communications, I found it pretty hard to identify a Python package which would enable one to use a Raspberry Pi (Zero W inthis case) to swiftly scan, connect to and read/write from/to a nearby BLE device (GATT server).
+As someone who runs a lot of data transformation code and needs to keep an eye on performance during specific steps, I was annoyed by how much I had to invest again and again to track my code progress and performance in an orderly fashion. 
 
-This package is intended to provide a quick, as well as (hopefully) easy to undestand, way of getting a simple BLE GATT client up and running, for all those out there, who, like myself, are hands-on learners and are eager to get their hands dirty from early on.
+Existing packages don't offer the ease-of-use I expected from such products or formatted the output horribly, hence this package was born. 
 

@@ -1,17 +1,25 @@
-Examples
+Example
 =============
 
 Installation
 *******************
-As the package has not been published on PyPi yet, it CANNOT be install using pip.
+
+The package is available on `PyPi <https://pypi.org/project/quicktimer/>`_ :
+
+.. code-block:: 
+
+    pip install quicktimer
 
 
 Usage
 **************************************************
 
-The two main commands are :code:`take_time()` and :code:`fancy_print()`.
+Instantiate the :code:`Timer` class and insert one-liners with :code:`take_time()` between your existing code to take timestamps. 
 
-Both can be used without any parameters, although you should pass at least a description to :code:`take_time("Finished x!")` to make full use of this module. 
+Call the :code:`fancy_print()` function to print a nicely formatted overview of how many seconds have passed overall, how many seconds have passed between the `take_time` calls, including percentage per step and passed step-descriptions. 
+
+Although both functions (:code:`take_time()` & :code:`fancy_print()`) can be used 
+without any parameters, you should pass at least a description to :code:`take_time("Finished x!")` to make full use of this module. 
 
 .. code-block:: python
 
@@ -41,7 +49,7 @@ Both can be used without any parameters, although you should pass at least a des
 
 Output of the code: 
 
-.. code-block:: python
+.. code-block:: 
 
     > Parsed the data
     > Stored the data

@@ -1,0 +1,5 @@
+
+- Allow the output channel to be changed from the standard `print` to logging. 
+- Convert seconds to min / hours if necessary & needed (Default=True). 
+
+

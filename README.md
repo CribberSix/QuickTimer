@@ -1,13 +1,15 @@
 # Timer
 
-An easy to use python class to handle time measurements in code. 
+An easy to use python package to handle time measurements in code. 
 
-Instantiate the class and insert one-liners (`take_time`) between your existing code to take timestamps. 
+Instantiate the `Timer` class and insert one-liners with `take_time()` between your existing code to take timestamps. 
 
-Call the `fancy_print` function to print a nicely formatted overview of how many seconds have passed overall, how many seconds have passed between the `take_time` calls, including percentage per step and passed step-descriptions. 
+Call the `fancy_print()` function to print a nicely formatted overview of how many seconds have passed overall, how many seconds have passed between the `take_time()` calls, including percentage per step and passed step-descriptions. 
 
 
 # Installation
+
+The package is available on [PyPi](https://pypi.org/project/quicktimer/) :
 
 ```
 pip install quicktimer 

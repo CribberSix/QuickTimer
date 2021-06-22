@@ -6,18 +6,19 @@
 Welcome to QuickTimer's documentation!
 ==================================================================
 
+QuickTimer is an easy to use python package to handle time measurements in code. 
+
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
    intro
    quicktimer
-   examples
+   example
 
 
-Indices and tables
+Index
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
