@@ -47,9 +47,6 @@ T.take_time("Stored the data", True)
 T.fancy_print()
 ```
 
-
-# Example
-
 Output of the code: 
 
 ```
