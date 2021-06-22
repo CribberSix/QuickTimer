@@ -1,3 +1,10 @@
+[![PyPi](https://img.shields.io/pypi/v/quicktimer?color=blue&style=plastic)](https://pypi.org/project/quicktimer/)
+![License](https://img.shields.io/pypi/l/quicktimer?style=plastic)
+[![CodeFactor](https://www.codefactor.io/repository/github/cribbersix/quicktimer/badge?style=plastic)](https://www.codefactor.io/repository/github/cribbersix/quicktimer)
+![Repository size](https://img.shields.io/github/repo-size/Cribbersix/QuickTimer?style=plastic)
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg?style=plastic)](https://www.python.org/)
+
+
 # Timer
 
 An easy to use python package to handle time measurements in code. 
