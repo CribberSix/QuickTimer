@@ -13,9 +13,11 @@ Call the `fancy_print` function to print a nicely formatted overview of how much
 The optional parameters determine how many decimal values of seconds / of percentage values should be shown. 
 
 
-#### Function `T.take_time(description="")`:  
+#### Function `T.take_time(description="", printme=False)`:  
 
 The optional parameter `description` is used describe the step and is shown in the `fancy_print` function. 
+
+The optional parameter `printme` is used to `print` the description before continuing. This might save you an extra line to keep track of the programm while it runs.
 
 Use this function with a description of what happened right before it. 
 
@@ -36,7 +38,7 @@ T.take_time()  # First time is taken
 
 # some code doing xyz
 time.sleep(2)
-T.take_time("doing xyz")
+T.take_time("doing xyz", True)
 
 # some code doing abc
 time.sleep(10)
@@ -44,7 +46,7 @@ T.take_time("doing abc")
 
 # some code doing hfg
 time.sleep(5)
-T.take_time("doing hfg")
+T.take_time("doing hfg", True)
 
 T.fancy_print()
 
@@ -52,6 +54,8 @@ T.fancy_print()
 
 The printed messages: 
 ```
+doing xyz
+doing hfg
 ------ Time measurements ------
 Overall: 17.0243 seconds
 Step 0:  2.0136 seconds -  11.83 % - Description: doing xyz

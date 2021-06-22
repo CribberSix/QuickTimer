@@ -8,9 +8,11 @@ class Timer:
         self.decimals_time = decimals_time
         self.decimals_percentage = decimals_percentage
 
-    def take_time(self, description=""):
+    def take_time(self, description="", printme=False):
         """Snapshots the current time and inserts it into the List as a Tuple with the passed description."""
         self.times.append((datetime.now(), description))
+        if printme:
+            print(description)
 
     def fancy_print(self, empty=True):
         """Fancy prints the differences between the individuals and the entire time taken."""
