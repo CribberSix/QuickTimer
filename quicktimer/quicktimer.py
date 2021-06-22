@@ -31,11 +31,11 @@ class Timer:
         if printme:
             print(description)
 
-    def fancy_print(self, empty=True):
+    def fancy_print(self, delete=True):
         """Fancy prints the entire time taken, the differences between the individual timestamps in absolute seconds & in percentages as well as the descriptions.
 
-        :param empty: empties the currently stored list of timestamps after ouput, defaults to True
-        :type empty: bool, optional
+        :param delete: deletes the currently stored list of timestamps after ouput, defaults to True
+        :type delete: bool, optional
         """
         r = self._get_individual_differences()
         entire_time = self._get_entire_difference()
@@ -52,7 +52,7 @@ class Timer:
             secs = f"{e[0]}".rjust(second_max_length)
             perc = f"{e[1]}".format(1.2).rjust(6)
             print(f"Step {step}: {secs} seconds - {perc} % - Description: {e[2]}")
-        if empty:
+        if delete:
             self.delete_timestamps()
 
     def delete_timestamps(self):
