@@ -1,0 +1,1 @@
+from .quicktimer import Timer

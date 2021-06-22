@@ -3,62 +3,62 @@
 An easy to use python class to handle time measurements in code. 
 
 Instantiate the class and insert one-liners (`take_time`) between your existing code to take timestamps. 
-Call the `fancy_print` function to print a nicely formatted overview of how much time has passed overall, how much time has passed between the `take_time` calls, including percentage per step and passed step-descriptions. 
+
+Call the `fancy_print` function to print a nicely formatted overview of how many seconds have passed overall, how many seconds have passed between the `take_time` calls, including percentage per step and passed step-descriptions. 
 
 
-## Logic 
+# Installation
 
-#### Initialization:  `Timer(decimals_time=".4f", decimals_percentage=".2f")`
+```
+pip install quicktimer 
+```
 
-The optional parameters determine how many decimal values of seconds / of percentage values should be shown. 
+# Usage
+
+The two main commands are `take_time()` and `fancy_print()`.
+
+Both can be used without any parameters, although you should pass at least a description to `take_time("Finished x!")` to make full use of this module. 
 
 
-#### Function `T.take_time(description="", printme=False)`:  
-
-The optional parameter `description` is used describe the step and is shown in the `fancy_print` function. 
-
-The optional parameter `printme` is used to `print` the description before continuing. This might save you an extra line to keep track of the programm while it runs.
-
-Use this function with a description of what happened right before it. 
-
-####  Function `T.fancy_print(empty=True)`: 
-
-The optional parameter `empty` is used to empty the existing list of timestamps taken. 
-This is useful when implemented in a loop where each iteration needs to be timed independently. 
-
-If the list should not be emptied and you want further timestamps to be appended to the existing ones after printing the overview, set the parameter to `False`.
-
-## Example 
 
 ```python
-import time 
+import time
+from quicktimer import Timer
 
-T = Timer()  # Initialization
-T.take_time()  # First time is taken 
+T = Timer()
 
-# some code doing xyz
+# take the starting time
+T.take_time(description="The description of the first function-call is never displayed!")
+
+time.sleep(5)  # code substitute: parsing the data
+T.take_time("Parsed the data", True)
+
+time.sleep(1)  # code substitute: transforming the data
+T.take_time("Transformed the data")
+
 time.sleep(2)
-T.take_time("doing xyz", True)
+T.take_time() 
 
-# some code doing abc
-time.sleep(10)
-T.take_time("doing abc")
-
-# some code doing hfg
-time.sleep(5)
-T.take_time("doing hfg", True)
+time.sleep(10)  # code substitute: Storing the data
+T.take_time("Stored the data", True)
 
 T.fancy_print()
-
 ```
 
-The printed messages: 
+
+# Example
+
+Output of the code: 
+
+```python
+> Parsed the data
+> Stored the data
+> ------ Time measurements ------
+> Overall: 18.0395 seconds
+> Step 0:  5.0140 seconds -  27.79 % - Description: Parsed the data
+> Step 1:  1.0059 seconds -   5.58 % - Description: Transformed the data
+> Step 2:  2.0148 seconds -  11.17 % - Description: 
+> Step 3: 10.0048 seconds -  55.46 % - Description: Stored the data
 ```
-doing xyz
-doing hfg
------- Time measurements ------
-Overall: 17.0243 seconds
-Step 0:  2.0136 seconds -  11.83 % - Description: doing xyz
-Step 1: 10.0102 seconds -  58.80 % - Description: doing abc
-Step 2:  5.0005 seconds -  29.37 % - Description: doing hfg
-```
+
+That's it!
