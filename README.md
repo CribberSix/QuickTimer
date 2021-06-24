@@ -11,7 +11,7 @@ An easy to use python package to handle time measurements in code.
 
 Instantiate the `Timer` class and insert one-liners with `take_time()` between your existing code to take timestamps. 
 
-Call the `fancy_print()` function to print a nicely formatted overview of how many seconds have passed overall, how many seconds have passed between the `take_time()` calls, including percentage per step and passed step-descriptions. 
+Call the `fancy_print()` function to print a nicely formatted overview of how much time has passed overall, how much time has passed between the `take_time()` calls, including percentage per step and passed step-descriptions. 
 
 
 # Installation
@@ -45,15 +45,15 @@ from quicktimer import Timer
 T = Timer()
 
 # take the starting time
-T.take_time(description="The description of the first function-call is never displayed!")
+T.take_time(description="The description of the first function-call is not displayed!")
 
-time.sleep(5)  # code substitute: parsing the data
+time.sleep(1.1)  # code substitute: parsing the data
 T.take_time("Parsed the data")
 
-time.sleep(2)  # code substitute
+time.sleep(0.02)  # code substitute
 T.take_time() 
 
-time.sleep(10) # code substitute: Storing the data
+time.sleep(0.1) # code substitute: Storing the data
 T.take_time("Stored the data", True)
 
 T.fancy_print()
@@ -64,10 +64,10 @@ Output of the code in the console:
 ```
 > Stored the data
 > ------ Time measurements ------
-> Overall: 17.0340 seconds
-> Step 0:  5.0119 seconds -  29.42 % - Description: Parsed the data
-> Step 1:  2.0085 seconds -  11.79 % - Description: 
-> Step 2: 10.0136 seconds -  58.79 % - Description: Stored the data
+> Overall: 0:00:01.254049
+> Step 0: 0:00:01.113962 -  88.83 % - Description: Parsed the data
+> Step 1: 0:00:00.030001 -   2.39 % - Description: 
+> Step 2: 0:00:00.110086 -   8.78 % - Description: Stored the data
 ```
 
 

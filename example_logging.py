@@ -12,7 +12,7 @@ T = Timer(output_func=logger.info)
 T.take_time()  # take the starting time
 
 time.sleep(0.5)  # code substitute: parsing the data
-T.take_time("Parsed the data", True)
+T.take_time("Parsed the data")
 
 time.sleep(0.1)  # code substitute: Storing the data
 T.take_time("Stored the data", True)

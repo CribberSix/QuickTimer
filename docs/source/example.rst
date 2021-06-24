@@ -16,7 +16,8 @@ Usage
 
 Instantiate the :code:`Timer` class and insert one-liners with :code:`take_time()` between your existing code to take timestamps. 
 
-Call the :code:`fancy_print()` function to print a nicely formatted overview of how many seconds have passed overall, how many seconds have passed between the :code:`take_time` calls, including percentage per step and passed step-descriptions. 
+Call the :code:`fancy_print()` function to print a nicely formatted overview of how much time has passed overall, 
+how much time has passed between the :code:`take_time` calls, including percentage per step and passed step-descriptions. 
 
 Although both functions (:code:`take_time()` & :code:`fancy_print()`) can be used 
 without any parameters, you should pass at least a description to :code:`take_time("Finished x!")` to add some context to your measurements. 
@@ -24,8 +25,8 @@ without any parameters, you should pass at least a description to :code:`take_ti
 You can either make use of the default output method (:code:`print` to the console) or you can pass a custom function: for instance to pass the messages to a logger. 
 
 
-Using the default output method :code:`print`
-****************************************************************************************************
+Using the default output method
+##################################
 
 When no :code:`output_func` parameter is passed during instantiation, it defaults to :code:`print` the messages to the console as follows: 
 
@@ -38,7 +39,7 @@ When no :code:`output_func` parameter is passed during instantiation, it default
     T = Timer()
 
     # take the starting time
-    T.take_time(description="The description of the first function-call is never displayed!")
+    T.take_time(description="The description of the first function-call is not displayed!")
 
     time.sleep(5)  # code substitute: parsing the data
     T.take_time("Parsed the data")
@@ -68,7 +69,7 @@ Output of the code in the console:
 
 
 Using a logger as output method 
-****************************************************************************************************
+#################################
 
 Instead of :code:`printing` to the console, you can also pass your own function to the module. 
 This can be used with an easily configured :code:`logger` to write the messages to your log.     
@@ -94,3 +95,14 @@ This can be used with an easily configured :code:`logger` to write the messages 
     T.take_time("Stored the data", True)
 
     T.fancy_print()
+
+
+The contents of your log-file would look like this: 
+
+.. code-block::  
+
+    2021-06-24 11:05:35,111 [INFO ]  Stored the data
+    2021-06-24 11:05:35,111 [INFO ]  ------ Time measurements ------
+    2021-06-24 11:05:35,111 [INFO ]  Overall: 0.6190 seconds
+    2021-06-24 11:05:35,111 [INFO ]  Step 0: 0.5108 seconds -  82.53 % - Description: Parsed the data
+    2021-06-24 11:05:35,111 [INFO ]  Step 1: 0.1082 seconds -  17.47 % - Description: Stored the data
