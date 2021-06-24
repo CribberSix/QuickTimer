@@ -24,8 +24,8 @@ pip install quicktimer
 
 # Usage
 
-The entire functionality is documented on [readthedocs](https://quicktimer.readthedocs.io/en/latest/quicktimer.html#module-quicktimer).
-
+The entire functionality is documented in-depth on [readthedocs](https://quicktimer.readthedocs.io/en/latest/quicktimer.html#module-quicktimer).
+In the following a quick overview of the basic functionality is shown. 
 
 The two main commands are `take_time()` and `fancy_print()`.
 
