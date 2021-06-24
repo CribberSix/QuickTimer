@@ -3,17 +3,29 @@ from datetime import datetime
 
 class Timer:
 
-    def __init__(self, decimals_time=4, decimals_percentage=2):
+    def __init__(self, decimals_time=4, decimals_percentage=2, output_func=print):
         """Initializes the class. 
 
         :param decimals_time: decimal places to be shown for seconds, defaults to 4
         :type decimals_time: int, optional
         :param decimals_percentage: decimal places to be shown for percentages, defaults to 2
         :type decimals_percentage: int, optional
+        :param output_func: a function to output messages (e.g. to a log), defaults to print
+        _type output_func: function, optional
         """
         self.times = []
-        self.decimals_time = "." + str(decimals_time) + "f"
-        self.decimals_percentage = "." + str(decimals_percentage) + "f"
+        self.decimals_time = f".{decimals_time}f"
+        self.decimals_percentage = f".{decimals_percentage}f"
+        self.output_func = output_func if output_func != print else print
+    
+
+    def set_output_func(self, output_func=print):
+        """Sets the output function of the module.
+
+        :param output_func: a function to output messages (e.g. to a log), defaults to print
+        :type output_func: function, optional
+        """
+        self.output_func = output_func if output_func != print else print
 
     def take_time(self, description="", printme=False):
         """Snapshots the current time and inserts it into the List as a Tuple with the passed description.
@@ -23,13 +35,10 @@ class Timer:
 
         :param printme: Enable printing the description after taking a snapshot of the time. Use this parameter to keep track of the code progress during runtime.
         :type printme: bool
-
-        :return: None
-        :rtype: None
         """
         self.times.append((datetime.now(), description))
         if printme:
-            print(description)
+            self.output_func(description)
 
     def fancy_print(self, delete=True):
         """Fancy prints the entire time taken, the differences between the individual timestamps in absolute seconds & in percentages as well as the descriptions.
@@ -40,8 +49,8 @@ class Timer:
         r = self._get_individual_differences()
         entire_time = self._get_entire_difference()
         
-        print("------ Time measurements ------")
-        print(f"Overall: {entire_time} seconds")
+        self.output_func("------ Time measurements ------")
+        self.output_func(f"Overall: {entire_time} seconds")
         if len(r) == 0: 
             return 
 
@@ -51,7 +60,7 @@ class Timer:
             step = f"{i}".rjust(step_max_length)
             secs = f"{e[0]}".rjust(second_max_length)
             perc = f"{e[1]}".format(1.2).rjust(6)
-            print(f"Step {step}: {secs} seconds - {perc} % - Description: {e[2]}")
+            self.output_func(f"Step {step}: {secs} seconds - {perc} % - Description: {e[2]}")
         if delete:
             self.delete_timestamps()
 
@@ -99,11 +108,10 @@ class Timer:
         """
         return [c[1] for c in self.times]
 
-    def get_snapshots(self):
+    def get_timestamps(self):
         """Returns the timestamps including the descriptions as a List of Tuples. 
 
         :return: A list of timestamps and discriptions.
         :rtype: List<(datetime, str)>
         """
-
         return self.times

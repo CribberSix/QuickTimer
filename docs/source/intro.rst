@@ -9,7 +9,7 @@ The aim here was to define a single object which would allow users to easily tra
 Motivation
 **********
 
-As someone who runs a lot of data transformation code and needs to keep an eye on performance during specific steps, I was annoyed by how much I had to invest again and again to track my code progress and performance in an orderly fashion. 
+As someone who runs a lot of data transformation code and needs to keep an eye on performance during specific steps, I was annoyed by how much time I had to invest again and again to track my code's progress and performance in an orderly fashion. 
 
 Existing packages don't offer the ease-of-use I expected from such products or formatted the output horribly, hence this package was born. 
 

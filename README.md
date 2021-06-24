@@ -24,10 +24,18 @@ pip install quicktimer
 
 # Usage
 
+The entire functionality is documented on [readthedocs](https://quicktimer.readthedocs.io/en/latest/quicktimer.html#module-quicktimer).
+
+
 The two main commands are `take_time()` and `fancy_print()`.
 
-Both can be used without any parameters, although you should pass at least a description to `take_time("Finished x!")` to make full use of this module. 
+Both can be used without any parameters, although you should pass at least a description to `take_time("Finished x!")` to add some context to your measurements. 
 
+You can either make use of the default output method (`print` to the console) or you can pass a custom function: for instance to pass the messages to a logger. 
+
+## Using the default output method `print`
+
+When no `output_func` parameter is passed during instantiation, it defaults to `print` the messages to the console as follows: 
 
 
 ```python
@@ -40,31 +48,52 @@ T = Timer()
 T.take_time(description="The description of the first function-call is never displayed!")
 
 time.sleep(5)  # code substitute: parsing the data
-T.take_time("Parsed the data", True)
+T.take_time("Parsed the data")
 
-time.sleep(1)  # code substitute: transforming the data
-T.take_time("Transformed the data")
-
-time.sleep(2)
+time.sleep(2)  # code substitute
 T.take_time() 
 
-time.sleep(10)  # code substitute: Storing the data
+time.sleep(10) # code substitute: Storing the data
 T.take_time("Stored the data", True)
 
 T.fancy_print()
 ```
 
-Output of the code: 
+Output of the code in the console: 
 
 ```
-> Parsed the data
 > Stored the data
 > ------ Time measurements ------
-> Overall: 18.0395 seconds
-> Step 0:  5.0140 seconds -  27.79 % - Description: Parsed the data
-> Step 1:  1.0059 seconds -   5.58 % - Description: Transformed the data
-> Step 2:  2.0148 seconds -  11.17 % - Description: 
-> Step 3: 10.0048 seconds -  55.46 % - Description: Stored the data
+> Overall: 17.0340 seconds
+> Step 0:  5.0119 seconds -  29.42 % - Description: Parsed the data
+> Step 1:  2.0085 seconds -  11.79 % - Description: 
+> Step 2: 10.0136 seconds -  58.79 % - Description: Stored the data
 ```
 
-That's it!
+
+## Using a logger as output method 
+
+Instead of `printing` to the console, you can also pass your own function to the module. 
+This can be used with an easily configured `logger` to write the messages to your log.   
+
+```python 
+import time
+import logging
+from quicktimer import Timer
+
+# setting up a logger
+my_format = "%(asctime)s [%(levelname)-5.5s]  %(message)s"
+logging.basicConfig(filename='test.log', level=logging.INFO, format=my_format)
+logger = logging.getLogger()
+
+# logger.info will be used as the output function instead of print
+T = Timer(output_func=logger.info)  
+
+T.take_time()  # take the starting time
+time.sleep(0.5)  # code substitute: parsing the data
+T.take_time("Parsed the data")
+time.sleep(0.1)  # code substitute: Storing the data
+T.take_time("Stored the data", True)
+
+T.fancy_print()
+```
