@@ -41,13 +41,13 @@ When no :code:`output_func` parameter is passed during instantiation, it default
     # take the starting time
     T.take_time(description="The description of the first function-call is not displayed!")
 
-    time.sleep(5)  # code substitute: parsing the data
+    time.sleep(1.1)  # code substitute: parsing the data
     T.take_time("Parsed the data")
 
-    time.sleep(2)  # code substitute
+    time.sleep(0.02)  # code substitute
     T.take_time() 
 
-    time.sleep(10) # code substitute: Storing the data
+    time.sleep(0.1) # code substitute: Storing the data
     T.take_time("Stored the data", True)
 
     T.fancy_print()
@@ -60,12 +60,26 @@ Output of the code in the console:
 
     > Stored the data
     > ------ Time measurements ------
-    > Overall: 17.0340 seconds
-    > Step 0:  5.0119 seconds -  29.42 % - Description: Parsed the data
-    > Step 1:  2.0085 seconds -  11.79 % - Description: 
-    > Step 2: 10.0136 seconds -  58.79 % - Description: Stored the data
+    > Overall: 0:00:01.254049
+    > Step 0: 0:00:01.113962 -  88.83 % - Description: Parsed the data
+    > Step 1: 0:00:00.030001 -   2.39 % - Description: 
+    > Step 2: 0:00:00.110086 -   8.78 % - Description: Stored the data
 
 
+The time can be displayed as :code:`timedelta` (default), :code:`seconds` or :code:`milliseconds`. 
+The number of decimal places for :code:`seconds` or :code:`milliseconds` can be set with the parameter :code:`decimals_time` which defaults to :code:`4`. 
+The number of decimal places for the :code:`percentages` can be set with the parameter :code:`decimals_percentage` which defaults to :code:`2`. 
+
+When initialized with :code:`T = Timer(time_unit="seconds", decimals_time=2, decimals_percentage=1)` the output would be the following. 
+
+.. code-block:: 
+
+    > Stored the data
+    > ------ Time measurements ------
+    > Overall: 1.24 seconds
+    > Step 0: 1.10 seconds -  88.8 % - Description: Parsed the data
+    > Step 1: 0.03 seconds -   2.5 % - Description: 
+    > Step 2: 0.11 seconds -   8.8 % - Description: Stored the data
 
 
 Using a logger as output method 
@@ -101,8 +115,8 @@ The contents of your log-file would look like this:
 
 .. code-block::  
 
-    2021-06-24 11:05:35,111 [INFO ]  Stored the data
-    2021-06-24 11:05:35,111 [INFO ]  ------ Time measurements ------
-    2021-06-24 11:05:35,111 [INFO ]  Overall: 0.6190 seconds
-    2021-06-24 11:05:35,111 [INFO ]  Step 0: 0.5108 seconds -  82.53 % - Description: Parsed the data
-    2021-06-24 11:05:35,111 [INFO ]  Step 1: 0.1082 seconds -  17.47 % - Description: Stored the data
+    2021-06-24 13:35:43,275 [INFO ]  Stored the data
+    2021-06-24 13:35:43,275 [INFO ]  ------ Time measurements ------
+    2021-06-24 13:35:43,275 [INFO ]  Overall: 0:00:00.624691
+    2021-06-24 13:35:43,275 [INFO ]  Step 0: 0:00:00.512639 -  82.06 % - Description: Parsed the data
+    2021-06-24 13:35:43,275 [INFO ]  Step 1: 0:00:00.112052 -  17.94 % - Description: Stored the data

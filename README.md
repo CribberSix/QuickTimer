@@ -97,3 +97,13 @@ T.take_time("Stored the data", True)
 
 T.fancy_print()
 ```
+
+Your log would look like this: 
+
+```
+2021-06-24 13:35:43,275 [INFO ]  Stored the data
+2021-06-24 13:35:43,275 [INFO ]  ------ Time measurements ------
+2021-06-24 13:35:43,275 [INFO ]  Overall: 0:00:00.624691
+2021-06-24 13:35:43,275 [INFO ]  Step 0: 0:00:00.512639 -  82.06 % - Description: Parsed the data
+2021-06-24 13:35:43,275 [INFO ]  Step 1: 0:00:00.112052 -  17.94 % - Description: Stored the data
+```

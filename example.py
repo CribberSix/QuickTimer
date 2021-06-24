@@ -1,7 +1,7 @@
 import time
 from quicktimer import Timer
 
-T = Timer(time_unit="seconds", decimals_time=10, decimals_percentage=5)
+T = Timer()
 
 # take the starting time
 T.take_time(description="The description of the first function-call is not displayed!")

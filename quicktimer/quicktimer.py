@@ -40,6 +40,8 @@ class Timer:
 
         :param time_unit: Unit in which time measurements are displayed
         :type time_unit: str, optional
+
+        :raises ValueError: when an unacceptable time_unit is passed as parameter. 
         """
         if time_unit not in self._acceptable_time_units: 
             raise ValueError(f"'{time_unit}' is not an acceptable time unit. Acceptable units are {self._acceptable_time_units}.")
@@ -76,9 +78,16 @@ class Timer:
         entire_time = self._get_entire_difference()
         
         self.output_func("------ Time measurements ------")
-        self.output_func(f"Overall: {entire_time}")
+        if self.time_unit == "seconds": 
+            self.output_func(f"Overall: {format(entire_time.total_seconds(), self.decimals_time_f)} seconds")
+        elif self.time_unit == "milliseconds": 
+            self.output_func(f"Overall: {format(entire_time.total_seconds() * 1000, self.decimals_time_f)} milliseconds")
+        else:
+            self.output_func(f"Overall: {entire_time}")
+
+        # return early if no steps were recorded
         if len(r) == 0:  
-            return  # no steps recorded
+            return  
 
         # get length of maximum step-string
         step_max_length = len(str(len(r)))  
@@ -156,7 +165,7 @@ class Timer:
     def get_descriptions(self):
         """Returns the stored descriptions. 
         
-        If no description was supplied when `take_time` was called, the value is an empty string. 
+        If no description was supplied when `take_time` was called, the value is an empty String. 
 
         :return: List of stored descriptions.
         :rtype: List<str>
