@@ -33,7 +33,7 @@ Both can be used without any parameters, although you should pass at least a des
 
 You can either make use of the default output method (`print` to the console) or you can pass a custom function: for instance to pass the messages to a logger. 
 
-## Using the default output method `print`
+### Using the default output method `print`
 
 When no `output_func` parameter is passed during instantiation, it defaults to `print` the messages to the console as follows: 
 
@@ -71,7 +71,7 @@ Output of the code in the console:
 ```
 
 
-## Using a logger as output method 
+### Using a logger as output method 
 
 Instead of `printing` to the console, you can also pass your own function to the module. 
 This can be used with an easily configured `logger` to write the messages to your log.   
