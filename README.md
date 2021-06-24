@@ -31,7 +31,7 @@ The two main commands are `take_time()` and `fancy_print()`.
 
 Both can be used without any parameters, although you should pass at least a description to `take_time("Finished_x!")` to add some context to your measurements. 
 
-You can either make use of the default output method (`print` to the console) or you can pass a custom function: for instance to pass the messages to a logger. 
+You can either make use of the default output method (`print` to the console) or you can pass a custom function: for instance to pass the messages to a `logger`. 
 
 ### Using the default output method (print)
 
